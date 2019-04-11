@@ -1,18 +1,16 @@
-# prereqs: iterators, hashes, conditional logic
-# Given a hash with numeric values, return the key for the smallest value
-require 'pry'
-
 def key_for_min_value(name_hash)
   if name_hash.size == 0
     return nil
   end
-  vals = name_hash.collect do |k, v|
-    v
-  end
-  smallest = vals.sort[0]
+  small_Vs = name_hash.collect {|k, v| v}
+  small_Ks = name_hash.collect {|k, v| k}
+  small_v = small_Vs[0]
+  small_k = small_Ks[0]
   name_hash.each do |k, v|
-    if v == smallest
-      return k
+    if v < small_v
+      small_v = v
+      small_k = k
     end
   end
+  small_k
 end
